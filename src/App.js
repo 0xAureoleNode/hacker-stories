@@ -1,4 +1,6 @@
 import * as React from 'react';
+import Search from './component/search/search.component';
+import List from './component/List/list.component';
 
 const App = () => {
   const stories = [
@@ -24,39 +26,7 @@ const App = () => {
       <h1>My Hacker Stories</h1>
       <Search />
       <hr />
-
       <List list={stories} />
-    </div>
-  );
-};
-
-const List = (props) => (
-  <ul>
-    {props.list.map((item) => (
-      <Item key={item.objectID} item={item} />
-    ))}
-  </ul>
-);
-
-const Item = (props) => (
-  <li>
-    <span>
-      <a href="{props.item.url}">{props.item.title}</a>
-    </span>
-    <span>{props.item.author}</span>
-    <span>{props.item.num_comments}</span>
-    <span>{props.item.points}</span>
-  </li>
-);
-
-const Search = () => {
-  const handleChange = (event) => {
-    console.log(event.target.value);
-  };
-  return (
-    <div>
-      <label htmlFor="search">Search: </label>
-      <input type="text" id="search" onChange={handleChange} />
     </div>
   );
 };
