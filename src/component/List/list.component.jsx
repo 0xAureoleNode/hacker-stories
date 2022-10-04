@@ -1,10 +1,9 @@
 import Item from '../Item/Item.component';
-const List = (props) => (
+const List = ({ list }) => (
   <ul>
-    {props.list.map((item) => (
+    {list.map((item) => (
       <Item key={item.objectID} item={item} />
     ))}
   </ul>
 );
-
 export default List;
