@@ -22,7 +22,16 @@ const App = () => {
     },
   ];
 
-  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchTerm, setSearchTerm] = React.useState(
+    localStorage.getItem('search') || ''
+    // getItem() accepts only one parameter, which is the key, and returns the value as a string.
+  );
+
+  React.useEffect(() => {
+    // key : search
+    // value : event.target.value
+    localStorage.setItem('search', searchTerm);
+  }, [searchTerm]);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
