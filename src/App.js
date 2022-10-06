@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Search from './component/search/search.component';
+import InputWithLabel from './component/InputWithLabel/InputWithLabel.component';
 import List from './component/List/list.component';
 
 // custom hook
@@ -49,7 +49,13 @@ const App = () => {
   return (
     <div>
       <h1>My Hacker Stories</h1>
-      <Search search={searchTerm} onSearch={handleSearch} />
+      <InputWithLabel
+        id="search"
+        label="Search"
+        value={searchTerm}
+        onInputChange={handleSearch}
+      />
+      {/* <Search search={searchTerm} onSearch={handleSearch} /> */}
       <hr />
       <List list={searchedStories} />
     </div>
