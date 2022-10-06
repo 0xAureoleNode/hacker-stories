@@ -2,6 +2,20 @@ import * as React from 'react';
 import Search from './component/search/search.component';
 import List from './component/List/list.component';
 
+// custom hook
+const useSemiPersistentState = (key, initialState) => {
+  const [value, setValue] = React.useState(
+    localStorage.getItem(key) || initialState
+  );
+  React.useEffect(() => {
+    // key : search
+    // value : event.target.value
+    localStorage.setItem(key, value);
+  }, [value, key]);
+
+  return [value, setValue];
+};
+
 const App = () => {
   const stories = [
     {
@@ -22,16 +36,7 @@ const App = () => {
     },
   ];
 
-  const [searchTerm, setSearchTerm] = React.useState(
-    localStorage.getItem('search') || ''
-    // getItem() accepts only one parameter, which is the key, and returns the value as a string.
-  );
-
-  React.useEffect(() => {
-    // key : search
-    // value : event.target.value
-    localStorage.setItem('search', searchTerm);
-  }, [searchTerm]);
+  const [searchTerm, setSearchTerm] = useSemiPersistentState('Search', 'React');
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
