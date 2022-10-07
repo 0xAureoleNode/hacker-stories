@@ -54,7 +54,10 @@ const App = () => {
         label="Search"
         value={searchTerm}
         onInputChange={handleSearch}
-      />
+      >
+        <strong>Search:</strong>
+      </InputWithLabel>
+
       {/* <Search search={searchTerm} onSearch={handleSearch} /> */}
       <hr />
       <List list={searchedStories} />
